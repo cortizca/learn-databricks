@@ -1,4 +1,4 @@
-#Day 1: ACID Transactions
+# Day 1: ACID Transactions
 
 
 ## What is it?
