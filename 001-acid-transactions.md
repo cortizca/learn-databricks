@@ -1,12 +1,13 @@
 #Day 1: ACID Transactions
- 
-What is it?
+
+
+## What is it?
 ACID transactions satisfy ACID properties that ensures each transaction will be fully committed or not at all.
  
-Why does it matter?
+## Why does it matter?
 Data loading might have issues that could lead to partial writes, deduplication and other data integrity problems.
  
-One real-world example
+## One real-world example
 As a senior data analyst, loading data into the data warehouse is already part of day-to-day responsibility.
  
 A simple, clean, formatted csv file can be loaded into Redshift in minutes without any problem.
@@ -30,5 +31,5 @@ Isolation  - multiple users can run read or write to the table without interrup
  
 Durable - if a transaction is committed, it will be permanently saved regardless if there is network interruption, etc.
  
-My takeaway
+## My takeaway
 ACID transactions ensure data integrity and data trust by keeping transactions fully committed or not at all.
