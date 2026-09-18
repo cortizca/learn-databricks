@@ -33,3 +33,18 @@ Durable - if a transaction is committed, it will be permanently saved regardless
  
 ## My takeaway
 ACID transactions ensure data integrity and data trust by keeping transactions fully committed or not at all.
+
+
+# DAY 2: Transaction Logs
+ 
+## What is it?
+Transaction logs or _delta_logs are JSON files created at the start of table creation. It tracks all transactions applied/operation/committed to the table.
+ 
+## Why does it matter?
+Transaction logs play a great role serving as the single source of truth for the table allowing time travel or table restoration. This is also critical in implementing ACID guarantees across Delta Table.
+ 
+## One real-world example
+Any insert, update, delete committed to the table are tracked under transaction logs as well as failed transactions. Multiple users can update the same table at the same time and transaction logs handles multiple operations thru optimistic concurrency control. With that, any concurrent non-conflicting transactions will be committed and logged to the table. Most recent commits are reference in the checkpoint transaction for quicker read and implements consistency across multiple users and sessions.
+ 
+## My takeaway
+Transaction logs are the backbone of implementing ACID guarantees allowing time travel and table restoration.
