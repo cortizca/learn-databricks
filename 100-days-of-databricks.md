@@ -48,3 +48,21 @@ Any insert, update, delete committed to the table are tracked under transaction 
  
 ## My takeaway
 Transaction logs are the backbone of implementing ACID guarantees allowing time travel and table restoration.
+
+# Day 3: Time Travel and Restore
+
+## What is it?
+Delta logs or transaction logs implementing ACID guarantees allow time travel and restoration.
+
+## Why is it important?
+This allows the ability to query a specific version of the table at a certain point in time. This is important for audit support and in case a specific version of the table needs to be restored.
+
+
+## One real-world example
+Erroneous data was inserted into the table. A data engineer needs to restore the previous state. Time travel makes this possible by querying the specific version and inserting it into the table. Direct table version restoration is possible using the RESTORE syntax as well.
+
+One thing to note though is that do not fully rely on Time Travel feature for restoration. Versions in the last 7 days only are available unless the log retention days is adjusted. 
+
+## My take away 
+Time travel is very handy in restoring a previous version and particularly helping in satisfying audit compliance and other table restoration needs.
+
