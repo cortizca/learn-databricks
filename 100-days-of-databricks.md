@@ -66,3 +66,23 @@ One thing to note though is that do not fully rely on Time Travel feature for re
 ## My take away 
 Time travel is very handy in restoring a previous version and particularly helping in satisfying audit compliance and other table restoration needs.
 
+
+# Day 4: Schema Enforcement and Schema Evolution
+
+## What is it?
+
+Schema enforcement is like schema validation. It ensures that no other columns will be added to the table.
+
+On the other hand, schema evolution allows adding new columns to the table. 
+
+## Why is it important?
+Schema enforcement is important to ensure that no unexpected table will be added to the table. Write operation will fail if new columns are introduced. 
+
+On the other hand, schema evolution is helpful if new columns need to be added to the table. This is extremely helpful if new columns are needed for data enrichment and update.
+
+## How is it implemented? 
+Schema evaluation is implemented by making sure that you update the write or write stream operation by indicating that mergeSchema = true.
+
+## My Key Takeaway 
+Schema enforcement ensures that table preserved the predefined schema while schema evolution allows introduction of new columns.
+
