@@ -86,3 +86,14 @@ Schema evaluation is implemented by making sure that you update the write or wri
 ## My Key Takeaway 
 Schema enforcement ensures that table preserved the predefined schema while schema evolution allows introduction of new columns.
 
+# Day 5: Liquid Clustering 
+
+## What is it?
+liquid clustering is one of the features of the Delta Lake allowing data partitioning.
+
+## why it is important 
+liquid clustering provides way to do data partitioning on an efficient and flexible manner. Before, when we partition a table, we need to do it once and if there’s any updates needed, we need to rewrite the table to include the new column on the partitioning statement. On the other hand, through liquid clustering, we can do the clustering on the fly, such such that we can update the table and then specify then you clustering columns without rewriting the table.
+
+## My Key Takeaway
+Liquid clustering plays a great role in optimizing delta tables in a way that it makes partitioning more efficient and in a flexible way.
+
