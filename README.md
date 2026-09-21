@@ -6,4 +6,4 @@
 #### 2 Transaction Logs
 #### 3 Time Travel and Restore
 #### 4 Schema Enforcement and Evolution
-#### 5 Liquid Clustering**
+#### 5 Liquid Clustering
