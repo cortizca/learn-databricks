@@ -97,3 +97,14 @@ liquid clustering provides way to do data partitioning on an efficient and flexi
 ## My Key Takeaway
 Liquid clustering plays a great role in optimizing delta tables in a way that it makes partitioning more efficient and in a flexible way.
 
+
+# Day 6: Optimize and File Compaction
+ 
+## What is it?
+Optimize operation organizes data for easier read and write operations
+ 
+## Why is it important?
+For Delta tables with clustering keys, optimize operation groups data by clustering key. On the other hand, for Delta tables with partition keys, optimize performs data grouping by specified partition key
+ 
+## My Key Takeaway
+Optimize operation is important to ensure data file compaction based on clustering key and partition key for easier data retrieval as well as efficiently supporting read and write operation.
