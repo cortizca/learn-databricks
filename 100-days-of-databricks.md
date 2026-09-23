@@ -108,3 +108,20 @@ For Delta tables with clustering keys, optimize operation groups data by cluster
  
 ## My Key Takeaway
 Optimize operation is important to ensure data file compaction based on clustering key and partition key for easier data retrieval as well as efficiently supporting read and write operation.
+
+
+# Day 7: Vacuum and Storage Lifecycle
+ 
+## What it is?
+Vacuum operation deletes table files that are unmanaged by Delta Table, files that are deleted and are no longer included in the current state of the table and files that are beyond the specified retention period.
+ 
+## What is it important?
+Vacuum operation helps in ensuring the only relevant files are being kept in order to optimize table files storage costs. Moreover, it is good to note that once vacuum opration is done, time travel beyond this retention period will not be possible.
+ 
+## More pertinent notes
+If Predictive Optimization is on, vacuum is handled automatically and periodically. There is no need to run vacuum operation manually.
+
+On the other hand, if vacuum operation tries to delete files deleted less than 7 days, a safety check will be triggered to ensure that this is a valid operation.
+ 
+## My Key Takeaway
+Vacuum deletes unused and unmanaged file. This is great for optimizing cost. However, ensure that retention days is setup property to avoid deleting files that are important for time travel and restore capabilities.
