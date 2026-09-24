@@ -125,3 +125,23 @@ On the other hand, if vacuum operation tries to delete files deleted less than 7
  
 ## My Key Takeaway
 Vacuum deletes unused and unmanaged file. This is great for optimizing cost. However, ensure that retention days is setup property to avoid deleting files that are important for time travel and restore capabilities.
+
+# Day 8: Change Data Feed (CDF)
+
+## What is it?
+
+Change data feed captures all the changes applied to the table - inserts, upserts and deletions. There are two types - automatic change data feed and legacy change data feed. Automatic change data feed is turned on by default for delta table and iceberg table v3 that satisfies the requirements. On the other hand, legacy change data feed needs to be manually turn on for individual tables.
+
+## Why is it important?
+Change data feed are essential in achieving the following, but not limited to:
+- Incremental ETL by tracking change operations like insert, upsert and deletes
+- Audit and compliance requirements by getting the lineage of all the changes for each record
+- Table replication by pulling change operations like insert, upsert and deletes
+
+## More pertinent notes
+For any given time, only one type of change data feed can be applied - either automatic or legacy. If legacy change data feed is turned on, it should be turned of first so that automatic change data feed would be applied. Moreover, automatic change data feed uses table_changes() compared to mergeInto from legacy change data feed. Another difference is that automatic change data feed is applied on table read while legacy change data feed is applied on table write. With this, automatic change data feed is more cost efficient compared to legacy change data feed in terms of storage. And speaking of storage, please bear in mind that change data feed relies to transaction logs and it is important to note that we can only see change data feed related to the current retention timeframe. Once transaction logs from deleted files are permanently deleted, related change data feed wont be recovered anymore. One workaround is to have a delta table specific for writing change data feed for easier retrieval and longer storage management.
+
+## My Key Takeway
+Change data feed tracks table changes - insert, upsert and deletions. Automatic change data feed is default for delta tables satisfying the requirements, whereas legacy change data feed should be applied manually to individual tables.
+
+
