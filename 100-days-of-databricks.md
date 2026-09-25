@@ -144,4 +144,19 @@ For any given time, only one type of change data feed can be applied - either au
 ## My Key Takeway
 Change data feed tracks table changes - insert, upsert and deletions. Automatic change data feed is default for delta tables satisfying the requirements, whereas legacy change data feed should be applied manually to individual tables.
 
+# Day 9: Deletion Vectors
+
+## What is it?
+Deletion vectors accelerate the update, merge and deletes operations on Delta Lake and Iceberg v3 tables.
+
+## Why is it important?
+Deletion vectors applies soft delete on parquet files without rewriting them. This improves efficiently and storage optimization.
+
+## Some pertinent notes
+Deletion vectors is applied automatically on Iceberg tables v3. On the other hand, deletion vectors should be applied manually on delta tables using create table or alter table functions. Lastly, deletion vectors are not applicable to materialized views or streaming tables.
+
+In order to permanently remove deleted files, apply reorg table purge to completely remove the deleted files from the storage.
+
+## My Key Takeaway
+Deletion vectors helps in soft deleting operations on Delta lakes and Iceberg V3 tables without physically rewriting the table.
 
