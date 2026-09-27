@@ -160,3 +160,13 @@ In order to permanently remove deleted files, apply reorg table purge to complet
 ## My Key Takeaway
 Deletion vectors helps in soft deleting operations on Delta lakes and Iceberg V3 tables without physically rewriting the table.
 
+
+# Day 10: Delta Table Properties
+## What it is?
+Delta table properties allows modifications on table configuration such as column settings, read and write operations, storage and compression.
+
+## Why is it important?
+Configuring delta table properties is importance in ensuring that delta table or iceberg table satisfy business requirements and read and write operations.
+
+## My Key Takeaway
+Delta table properties make it more flexible to configure delta table and iceberg tables.
