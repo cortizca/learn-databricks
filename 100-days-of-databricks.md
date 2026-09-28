@@ -193,3 +193,23 @@ This is the complete opposition of eager evaluation for pandas dataframe where e
 ## My Key Takeaways
 Lazy evaluation performs transformations based on actions that are called for.
 
+
+# Day 11: Photon Engine
+
+## What is it?
+Photon engine accelerations query execution in SQL and spark operations. It is powered by native vectorized C++
+query engine for both SQL and dataframe operations.
+
+## Why is it important?
+Photon engine performs operations at columnar level compared to row-by-row operation making the overall
+execution more efficient and cost-effective.
+
+Its impact can be significantly evident to read, aggregations, joins and write operations.
+
+## More Pertinent Notes
+While photon engine influences cost and query optimization on SQL and dataframe operations, this does not help
+much on Python UDF since the execution will revert back to the normal process.
+
+# My Key Takeaway
+Photon engine helps in optimizing SQL and dataframe operations such as read, aggregation, join and write.
+
