@@ -170,3 +170,26 @@ Configuring delta table properties is importance in ensuring that delta table or
 
 ## My Key Takeaway
 Delta table properties make it more flexible to configure delta table and iceberg tables.
+
+# Day 11: Lazy Evaluation and Actions
+
+## What is it?
+Lazy evaluation in Spark is a way of delaying execution of transformations on a dataframe unless an action is called.
+
+## Why is it important?
+Lazy evaluation helps in planning the execution operations by evaluating the overall process before running the entire operations. It optimizes the pipeline operation by saving on memory and ensuring that only actions that are called for are being evaluated and executed.
+
+## Additional pertinent information
+Lazy evalutation handles two parts - transformation and action.
+
+Transformation are set of operation that reads, filters, aggregated data.
+
+On the other hand, actions could be showing data, displaying aggregations or writing data.
+
+Lazy evaluation handles the optimization of different transformations and only executes once the action is called for.
+
+This is the complete opposition of eager evaluation for pandas dataframe where every transformation is being performed.
+
+## My Key Takeaways
+Lazy evaluation performs transformations based on actions that are called for.
+
