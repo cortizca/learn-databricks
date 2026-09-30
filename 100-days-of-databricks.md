@@ -194,7 +194,7 @@ This is the complete opposition of eager evaluation for pandas dataframe where e
 Lazy evaluation performs transformations based on actions that are called for.
 
 
-# Day 11: Photon Engine
+# Day 12: Photon Engine
 
 ## What is it?
 Photon engine accelerations query execution in SQL and spark operations. It is powered by native vectorized C++
@@ -213,3 +213,24 @@ much on Python UDF since the execution will revert back to the normal process.
 # My Key Takeaway
 Photon engine helps in optimizing SQL and dataframe operations such as read, aggregation, join and write.
 
+# Day 13: Catalyst Optimizer
+
+## What is it?
+Catalyst Optimizer converts abstract user logic into high performance query execution using the 4-step appro[ach] [text cut off at right edge of photo]
+
+## Why is it important?
+Catalyst Optimizer helps in executing the query plan into efficiently by coordinating the analysis, logical
+optimization, physical planning and code generation.
+
+## Other Pertinent Notes
+Catalyze Optimizer follows the following logical steps:
+1 Analysis - checking validity of tables, columns and rows
+2 Logical optimization - rule-based optimization applying predicate pushdown (applying filters closer to the
+source), column pruning (exclude columns that are not needed in the query execution)
+3 Physical Planning - optimized logical plan into physical operators, broadcasthashjoin vs sortmergejoin
+4 Code generation - compiling the final output. Users can use explain function to check the planning and logical
+execution
+
+## My Key Takeaway
+Catalyst optimizer performs high performance query execution based on the 4-way logical approach -- analysis,
+logical optimization, physical planning and code generation.
