@@ -258,3 +258,20 @@ Partitioning - AQE handles dynamically data skews.
 ## My Key Takeaway
 Adaptive Query Execution optimizes query during execution by improving data partition, data skews and join
 operations.
+
+
+# Day 15: Shuffle Operations
+
+## What is it?
+Shuffle operations moves data across partitions to perform different operations such as groupBy, joins,
+aggregations and distinct.
+
+## Why is it important?
+Shuffle operations require network communication and perform disk read and write hence making it as an
+expensive operation. It is important to understand its role in query execution in order to plan efficiency and overall
+cost impact.
+
+## My Key Takeaway
+Shuffle operations handles data movement from one partition to perform groupBy, joins, aggregations and distinct
+operations.
+
