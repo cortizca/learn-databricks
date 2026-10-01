@@ -234,3 +234,27 @@ execution
 ## My Key Takeaway
 Catalyst optimizer performs high performance query execution based on the 4-way logical approach -- analysis,
 logical optimization, physical planning and code generation.
+
+
+# Day 14: Adaptive Query Execution
+
+## What is it?
+Adaptive Query Execution dynamically optimizes query during runtime.
+
+## Why is it important
+During runtime, there is an initial plan, current plan and final plan. When enabled, AQE automatically optimizes the
+execution by checking the real-time query statistics and see what could be improve for efficiency. This dynamic
+optimization saves resources by looking at optimizing partitions, joins and handling data skews.
+
+## Other Pertinent Notes
+AQE optimizes the query runtime by looking at the following:
+Coalesce - by default, the number of partitions is set to 200. If data is not large enough, too many partitions than
+what is needed could cause the very high I/O operations. By enabling AQE, the optimal number of partitions is
+being determined during runtime.
+SortMergeJoin to BroadcastHashJoin - AQE also dynamically determines whether BroadcastHashJoin is better
+applied over SortMergeJoin.
+Partitioning - AQE handles dynamically data skews.
+
+## My Key Takeaway
+Adaptive Query Execution optimizes query during execution by improving data partition, data skews and join
+operations.
