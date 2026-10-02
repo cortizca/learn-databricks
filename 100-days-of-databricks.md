@@ -275,3 +275,29 @@ cost impact.
 Shuffle operations handles data movement from one partition to perform groupBy, joins, aggregations and distinct
 operations.
 
+
+Day 16: Join Strategies
+
+## What is it?
+Spark implements different join strategies depending on the size of the tables to be joined. Join strategies could be
+dynamically implemented by enabling Adaptive Query Execution or by explicitly stating the type of join strategy in
+the code.
+
+## Why is it important?
+Join strategies helps in optimizing query planning and query run. The appropriate join strategy helps with cost
+optimization, efficient I/O operations and avoiding OOM issues.
+
+## More Pertinent Notes
+The following are the join strategies in Spark
+1. BroadcastHashJoin - this is extremely helpful when one large table is joined by a smaller table (e.g. below
+   10MB default threshold). The way it works is that the smaller table is being broadcasted(copied) to each
+   executor hence limiting the shuffle on the larger table.
+2. Shuffle Hash Join - this is more applicable to medium tables where shuffle happens based on the join key
+   where rows with the same key lands in the same partition. One advantage is there is no sorting needed.
+3. Sort-Merge-Join - almost the same as Shuffle Hash Join but sort is being introduced. This is more I/O
+   operation extensive compared to the first two but it helps with skew data.
+
+## My Key Takeaway
+Join strategies plays a great role in query execution specially in implementing and optimizing table joins operations
+based on the table size and table distribution.
+
