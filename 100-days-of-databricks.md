@@ -276,7 +276,7 @@ Shuffle operations handles data movement from one partition to perform groupBy, 
 operations.
 
 
-Day 16: Join Strategies
+# Day 16: Join Strategies
 
 ## What is it?
 Spark implements different join strategies depending on the size of the tables to be joined. Join strategies could be
