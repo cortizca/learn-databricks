@@ -301,3 +301,17 @@ The following are the join strategies in Spark
 Join strategies plays a great role in query execution specially in implementing and optimizing table joins operations
 based on the table size and table distribution.
 
+
+# Day 17: Spark UI
+
+## What is it?
+Spark UI helps understand the process execution by providing views and metrics related to drivers, nodes, stages, execution and tasks.
+
+## Why is it important?
+Spark UI gives the full picture of every stage and operation that takes a lot to execute, any area that needs improvement and why jobs fail.
+
+## More Pertinent Notes
+Essentially, the Spark UI can be used to looked into long running operations, used metrics in determining data skews, possible optimization techniques, spill memory or disk and the like.
+
+## My Key Takeaway
+Spark UI is a powerful tool to understand query execution and determine possible optimization techniques.
