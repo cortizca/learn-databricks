@@ -315,3 +315,8 @@ Essentially, the Spark UI can be used to looked into long running operations, us
 
 ## My Key Takeaway
 Spark UI is a powerful tool to understand query execution and determine possible optimization techniques.
+
+# Day 18: Partitioning
+
+## What is it?
+
