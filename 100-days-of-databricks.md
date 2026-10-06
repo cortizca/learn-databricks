@@ -331,3 +331,28 @@ During initial partitioning with AQE, the the default number or partition or wha
 
 ## My Key Takeaway
 The number of partitions in the shuffle stage in wide transformations is a key role in gaining optimal query execution. The number of partitions can dynamically determined and optimzied using Adaptive Query Execution.
+
+
+# Day 19: Data Skew - Detection and Mitigation
+
+## What is it?
+Data skew is one of the performance bottlenecks in Spark. This happens when one or more data clusters take more
+time to complete the operation compared to the rest.
+
+## Why is it important?
+Early detection of data skew is important to optimize overall execution. Ensuring that data is distribution in
+uniform partitions helps with workers completing the operations at the same time. However, if one executors
+takes longer than the rest, the stage will still be ongoing until the last longer-running executor completes.
+
+## More Pertinent Notes
+To determine if data skew is present, check the Stage tab in the Spark UI. For each task, evaluate the metrics
+particularly the variance between the 75% and max number. If the max number is more than 50% of the 75th
+percentile, it suggests that there is a data skewness present in the execution. Spill data in memory or disk is also a
+good indicator of data skewness.
+
+Couple of ways to resolve data skewness is using Adaptive Query Execution, Broadcast Hash Join or salting for
+large-to-large table joins.
+
+## My Key Takeaway
+Data skew is one of the performance bottlenecks to look for in order to resolve possible query performance issue.
+AQE, broadcast hints or salting can improve data skewness.
