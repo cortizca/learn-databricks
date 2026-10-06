@@ -319,4 +319,15 @@ Spark UI is a powerful tool to understand query execution and determine possible
 # Day 18: Partitioning
 
 ## What is it?
+During data shuffling, data is partitioned into n number of partitions. 
 
+## Why is it important?
+The number of data partitions during shuffling affects the overall query performance. For wide transformations such as joins, aggregations, groupBy and distinct, the number of partitions influences how the each data partition executes the overall operations. It is important to consider number of partition is not too many for small dataset or not too small for a big dataset.
+
+## Other Pertinent Notes
+By default, the number of partitions is set to 200. However, in the newer Databricks runtime, Adaptive Query Execution is supported where the optimal number of partitions could be determine during runtime. 
+
+During initial partitioning with AQE, the the default number or partition or whatever number of partition set is considered. Second phase of the query plan checks the shuffle stats per partitions and applies coalescing partitions. Coalescing partitions evaluates whether the partition are too small or two large and dynamically adjusts the number of partitions to have a more uniform partition size which is usually 64mb.
+
+## My Key Takeaway
+The number of partitions in the shuffle stage in wide transformations is a key role in gaining optimal query execution. The number of partitions can dynamically determined and optimzied using Adaptive Query Execution.
