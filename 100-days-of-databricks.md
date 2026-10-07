@@ -356,3 +356,39 @@ large-to-large table joins.
 ## My Key Takeaway
 Data skew is one of the performance bottlenecks to look for in order to resolve possible query performance issue.
 AQE, broadcast hints or salting can improve data skewness.
+
+
+# Day 20: Memory Management & Spill
+
+## What is it?
+Memory management refers to handling and optimizing memory during execution.
+
+## Why is it important?
+An optimal memory management approach could avoid unwanted spill on memory and spill on disk leading to longer-running operations and out-of-memory issues.
+
+## Other Pertinent Notes
+
+The unified memory model (execution + storage pool).
+In Spark, managing JVM heap leads to the unified memory model.
+Generally, memory is divided into three - user memory, reserved memory (usually 300MB) and the rest for the unified memory pool.
+Unified memory pool is then allocated into two - execution memory and storage memory.
+Execution memory stores temporary data during shuffle operations and wide transformations like joins, groupBy, aggregation and distinct.
+On the other hand, storage memory handles cached data and broadcast variables.
+These two share the same totality of memory and could dynamically borrow memory from each other if the need arises.
+
+Moreover, it is important to note the possible causes of spill. Normally, when a single task operation data structure exceeds allocated slice of partitions. Possible reasons for this memory spill are data skew, exploding transformations, insufficient shuffle [partitions — line appears cut off]
+
+There are couple of ways to diagnose spill from Spark UI:
+1 - Go to Spark UI -> Stage -> Check the task with the longest duration. Evaluate Spill (memory) and Spill (Disk) -- any non-zero value could mean a spill
+
+2 - Check Task Metrics
+Uniform spill can be confirmed by checking the min, median and max of Spill (Disk) -- if they are all high and values are close, it means that the partition are too large and there is a lack of execution memory
+
+Skewed spill - if the median spill is 0 and the max spill is 2GB, then there is a data skew problem where couple of tasks are suffering.
+
+One way to proactively solve data spill and memory issue is by tuning spark.sql.shuffle.partitions and executor memory.
+
+Adaptive Query Execution can help with optimizing the number of partitions based on the query metrics during runtime. Salting with data skew could help too.
+
+## My Key Takeaway
+Understanding memory management and spill is important in dealing with big data and anticipate possible memory issues during execution so that we could have an idea on how to deal with these problems.
