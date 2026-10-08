@@ -392,3 +392,21 @@ Adaptive Query Execution can help with optimizing the number of partitions based
 
 ## My Key Takeaway
 Understanding memory management and spill is important in dealing with big data and anticipate possible memory issues during execution so that we could have an idea on how to deal with these problems.
+
+
+# Day 21: DataFrame API: Core Operations
+
+## What is it?
+DataFrame API is used to perform data cleaning, transformation and enrichment in Spark. It provides options for multiple data transformations at once using chaining pattern.
+
+## Why is it important?
+It allows to apply filtering, aggregations and joins to an existing dataframe for the purpose of data transformation and feature extraction.
+
+## Other Pertinent Notes
+DataFrame API and Spark SQL are commonly used for data transformation in Spark. These two both utilize the same Catalyst optimizer execution plan.
+The choice of the two depend on the team familiarity and importance of readibility of code to the audience/users.
+
+Moreover, DataFrame API applies chaining pattern that can be applied to a dataframe such as select, filter, withColumn, groupBy, aggregation and join. Few notes for more optimize approach is to apply filter and join operations early and ensure that groupBy is followed by the agg funtion.
+
+## My Key Takeaway
+DataFrame API is one [Ctrl] features of Spark where it applies chaining patterns for dataframe operations such as select, filter, with columns, groupBy, agg and joins.
