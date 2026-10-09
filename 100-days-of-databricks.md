@@ -410,3 +410,26 @@ Moreover, DataFrame API applies chaining pattern that can be applied to a datafr
 
 ## My Key Takeaway
 DataFrame API is one [Ctrl] features of Spark where it applies chaining patterns for dataframe operations such as select, filter, with columns, groupBy, agg and joins.
+
+
+From <https://github.com/jrlasak/databricks-100>
+
+Day 22: Temporary View and Global Temporary View
+
+## What is it?
+Temporary views and global temporary views display table results based on a defined query.
+
+## Why is it important?
+These are both important and useful in displaying table results from a complex query without saving the query results into memory.
+Some use cases include creating mapping table and mediating table pertinent to the data transformation.
+
+## More Pertinent Notes
+One thing to consider with temporary view is that it is session-based and it terminates once the session is done.
+Moreover, it cannot be accessed by another application, notebook or app even if they use the same cluster.
+
+On the other hand, global temporary views extends the capability of temporary view such that other applications, apps or jobs that uses the same cluster can access the global temporary view.
+
+However, both temporary and global temporary views are lost and terminated once the cluster restarts and need to be redefined in order to use again.
+
+## My Key Takeaway
+Temporary and Global Temporary Views both help in holding table results from a query but they don't persist outside cluster once it restarts.
