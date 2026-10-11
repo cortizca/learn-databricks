@@ -433,3 +433,20 @@ However, both temporary and global temporary views are lost and terminated once 
 
 ## My Key Takeaway
 Temporary and Global Temporary Views both help in holding table results from a query but they don't persist outside cluster once it restarts.
+
+
+# Day 23: Window Functions
+
+## What is it?
+Windows functions perform aggregations based on specified partitions.
+
+## Why is it important?
+Window functions are important in getting desired complex calculation by group without physically grouping the data.
+
+## Other Pertinent Notes
+Some of common windows functions are row_number(), rank(), dense_rank(), lead(), lag() and running aggregations.
+
+In terms of Spark, shuffle is needed in order to group data with the same key before performing the window function. It could be resource expensive and might trigger data skew so these should be considered.
+
+## My Key Takeaway
+Window functions are useful in calculating aggregations based on a defined partition.
