@@ -450,3 +450,23 @@ In terms of Spark, shuffle is needed in order to group data with the same key be
 
 ## My Key Takeaway
 Window functions are useful in calculating aggregations based on a defined partition.
+
+# Day 24: Complex Types: ARRAY, STRUCT, MAP
+
+## What is it?
+Array is a row containing list of data often consisting of the same characteristics.
+Example: {"reading", "listening", "walking")
+
+Struct is a list of list containing related information.
+Example: {"Street": "Beata", "City", "Manila", "Province": "Metro Manila"}
+
+## Why is it important
+Arrays and structs are helpful in storing and representing data with complex structures.
+
+## Other Pertinent Notes
+List in the arrays can be shown as individual rows using the explode() function. Posexplode() is also available if index and actual row value are needed to be displayed together.
+
+On the other hand, specific struct value can be accessed by using the dot notation.
+
+## My Key Takeaway
+Array and struct can be used to store complex data types.
