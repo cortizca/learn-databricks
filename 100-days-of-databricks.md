@@ -470,3 +470,25 @@ On the other hand, specific struct value can be accessed by using the dot notati
 
 ## My Key Takeaway
 Array and struct can be used to store complex data types.
+
+# Day 25: Higher-Order Functions
+
+## What is it?
+Higher order functions applied on arrays are native in Spark, and are not Python UDF.
+These can be imported from pyspark.sql.functions.
+
+The following are some of the higher-order functions applied on arrays:
+1. transform(col, f) - applies logic to every element in the array
+2. filter(col, f) - applies filter and display array elements that satisfy condition
+3. exists(col, f) - returns true if at least one element satisfies condition specified
+4. forall(col, f) - returns true if all elements satisfy the condition
+5. aggregate(col, initalValue, merge, finish=None) - return a single value based on the aggregation function
+
+## What is it important?
+Perform transform, filter, condition check and aggregation on arrays without exploding the array elements into individual rows
+
+## Other Pertinent Notes
+The use of higher-order functions over explode() function is beneficial if transformation, filtering and aggregation is done per row. If operations includes join for each array element, it is helpful to use the explode() function.
+
+## My Key Takeaway
+Higher-order functions on array are applied to row-level transformation, filtering and aggregation.
