@@ -492,3 +492,25 @@ The use of higher-order functions over explode() function is beneficial if trans
 
 ## My Key Takeaway
 Higher-order functions on array are applied to row-level transformation, filtering and aggregation.
+
+# Day 26: CTEs, PIVOT & Subqueries
+
+## What is it?
+Common table expression are named queries that can be used to define mediating tables included in the main query block
+
+Pivot - this operation is turning rows into columns
+
+Subqueries - these are queries inside a query block that could return a scalar value, list of rows that are useful in applying the desired query conditions
+
+## Why is it important?
+
+CTE and subqueries play a great role in creating more readable mediating queries instead of developing convoluted lines of code. Some use cases include creating a mediating table or a summary table that can be used in the downstream segment of the main query block.
+
+On the other hand, subqueries could be correlated or uncorrelated, these are useful in returning scalar values or returning a series of rows needed for the analysis.
+
+## Other Pertinent Notes
+In Spark, CTE, Pivot and Subqueries operations can be checked by running the explain extended function.
+
+## My Key Takeaway
+CTE, Pivot and subqueries help in developing readable and more lightweight query chunks for reusable query results within the main query block.
+
