@@ -514,3 +514,18 @@ In Spark, CTE, Pivot and Subqueries operations can be checked by running the exp
 ## My Key Takeaway
 CTE, Pivot and subqueries help in developing readable and more lightweight query chunks for reusable query results within the main query block.
 
+# Day 27: UDFs vs. Native Functions
+
+## What is it?
+User-defined functions are named functions created by user at runtime to evaluate data and perform operations based on set operators and transformations.
+
+Native functions are built-in functions that can be imported directly from Spark or pyspark libraries.
+
+## Why is it important?
+User-defined functions are helpful in developing custom functions that are not available in built-in functions. This is particularly helpful in terms of implementing flexibility on the function logic.
+
+## Other Pertinent Notes
+Built-in and SQL UDF are the fastest since they are performance-optimized. On the other hand, Python UDF is the slowest since data needs to serialize, move out from JVM and move to Python interpreter. Comparing to Pandas UDF, Pandas UDFs are 100x faster.
+
+## My Key Takeaway
+User-defined functions provides the option of implementing flexible logic on data transformation. However, it's better to check and evaluate first if built-in function is available before creating UDF in order to consider best performance and cost-efficiency.
