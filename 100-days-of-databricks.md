@@ -531,7 +531,7 @@ Built-in and SQL UDF are the fastest since they are performance-optimized. On th
 User-defined functions provides the option of implementing flexible logic on data transformation. However, it's better to check and evaluate first if built-in function is available before creating UDF in order to consider best performance and cost-efficiency.
 
 
-# Day 27: Variant
+# Day 28: Variant
 
 ## What is it?
 Variant is a data type that can be used to store JSON data type such as API payloads.
