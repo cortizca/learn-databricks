@@ -548,3 +548,26 @@ In terms of medallion architecture, Variant data type is suggested for bronze ta
 
 ## My Key Takeaway
 Variant, JSON strings and structs are ways in reading and storing complez data types. The choice of use among these three depends on the business and technical use cases.
+
+# Day 29: MERGE INTO
+
+## What is it?
+Merge Into is used to apply changes from source to target table. This can be used to apply SCD types 1 and 2.
+
+## Why is it important?
+Merge Into supports update, insert and deletes from source to target tables. This ensures that any changes made on the source table is reflected into target table to ensure data synchronization.
+
+## Other Pertinent Notes
+There are different variations of Merge Into code but the base code block is shown below:
+```
+MERGE INTO TARGET_TABLE USING SOURCE_TABLE
+ON SOURCE.KEY = TARGET.KEY
+WHEN MATCH THEN UPDATE SET *
+WHEN NOT MATCH THEN INSERT SET *
+WHEN NOT MATCH BY SOURCE THEN DELETE
+```
+
+The code could be adjusted depending to use case such as deduplication, and inserting, updating, or deleting based on condition.
+
+## My Key Takeaway
+MERGE INTO is a mostly used in applying changes from source to target table supporting SCD capabilities.
