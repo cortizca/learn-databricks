@@ -529,3 +529,22 @@ Built-in and SQL UDF are the fastest since they are performance-optimized. On th
 
 ## My Key Takeaway
 User-defined functions provides the option of implementing flexible logic on data transformation. However, it's better to check and evaluate first if built-in function is available before creating UDF in order to consider best performance and cost-efficiency.
+
+
+# Day 27: Variant
+
+## What is it?
+Variant is a data type that can be used to store JSON data type such as API payloads.
+
+## Why is it important?
+Variants are widely used for JSON data type where JSON keys are not strongly typed and changes over time.
+
+## Other Pertinent Notes
+JSON store as strings need to be parsed every time and need to specify the data type at each read time.
+
+On the other hand, Variant allows  json key values to support, carry and display their original data type without explicitly type casting.
+
+In terms of medallion architecture, Variant data type is suggested for bronze table for flexibity and ensure that the flow will not break for every new JSON key. After that, JSON string or struct is recommended for silver layer for more defined and explicit extraction of needed json key values.
+
+## My Key Takeaway
+Variant, JSON strings and structs are ways in reading and storing complez data types. The choice of use among these three depends on the business and technical use cases.
