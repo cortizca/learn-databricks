@@ -571,3 +571,27 @@ The code could be adjusted depending to use case such as deduplication, and inse
 
 ## My Key Takeaway
 MERGE INTO is a mostly used in applying changes from source to target table supporting SCD capabilities.
+
+# Day 30: CHECK CONTRAINTS
+## What is it?
+There are two types of constraints - enforced and informational. For enforced constraints, the transaction will fail if the condition is not satisfied. On the other hand, informational constraints are not enforced.
+
+## Why is it important?
+Enforced constraints ensure that conditions specified are satisfied before table write to support data integrity. Moreover, informational constraint helps show table identity true primary key and unique key while foreign key supports relationship between tables. These table relationships could improve query performance if properly configured.
+
+## More Pertinent Notes
+Enforced contraints could be ```CHECK``` contraint or ```NOT NULL``` contraint.
+
+```CHECK``` contraint defines a boolean expression where if not satisfied, the transaction will fail. The boolean expression should be deterministic unless it's a UDF, aggregation function or window function.
+
+```NOT NULL``` contraint ensure that row value will not be null during table write.
+
+To check enforced constraints in a table, ```DESCRIBE TABLE``` and ```SHOW TBLPROPERTIES``` can be used.
+
+For informational constraints - primary key is used to denote the identify each row in a table. Imposing a unique key to a primary key ensures that each row identifier is distinct. On the other hand, foreign key is helpful in relating a table to another table in the database.
+
+In case a specific constraint needs to be removed, ```DROP FEATURE``` can be used.
+
+## My Key Takeaway
+Enforced constraint is one way to implement data integrity on a table. Informational constraints like primary key, foreign key and unique key are essential in describing table properties and table relationship.
+
