@@ -595,3 +595,22 @@ In case a specific constraint needs to be removed, ```DROP FEATURE``` can be use
 ## My Key Takeaway
 Enforced constraint is one way to implement data integrity on a table. Informational constraints like primary key, foreign key and unique key are essential in describing table properties and table relationship.
 
+# Day 31: COPY INTO and Auto Loader
+
+## What is it?
+```COPY INTO``` is one way of incrementally load data from a file location into Delta table. This is mostly used for one-time or adhoc data load.
+
+Auto loader is more flexible in handling millions of data files from a storage location into Delta table. It processes data loading as file arrives. They ensure an exactly once loading process. Any processed files are skipped even modified files unless explicitly configured to reprocess.
+
+## Why is it important?
+Is it important to know the advantages, disadvantes, and difference between ```COPY INTO``` and Auto Loader to carefully plan and decide the design and patters of data loading from file location into Delta table.
+
+## Other Pertinent Notes
+```COPY INTO``` is a good use case for data load involving thousands of data files. Same with auto loader, data files that have been processed are being skipped. Use this for one-time or adhoc data loading.
+
+On the other hand, auto loader is the one usually used on production. It has the ability to process millions of data files. Data is being processed as they arrive into the file location. This timely data processing is possible thru structured streaming called ```cloudFiles```.
+
+Moreover, auto loader is capable of handling schema evolution to support schema enforcement before table write. In case of any issue during the data load, auto loader can restart the loading process based on the last successful operation as saved in the checkpoint location.
+
+## My Key Takeaway
+```COPY INTO``` is good for one-time or adhoc data load. Auto loader is more appropriate for production setting supporting millions of data files, schema evolution, and structured streaming.
