@@ -614,3 +614,29 @@ Moreover, auto loader is capable of handling schema evolution to support schema 
 
 ## My Key Takeaway
 ```COPY INTO``` is good for one-time or adhoc data load. Auto loader is more appropriate for production setting supporting millions of data files, schema evolution, and structured streaming.
+
+# Day 32: FILE FORMATS
+
+## What is it?
+Data come in different forms. They could be in a table, columnar, file, binary, structured or semi-structured formats.
+
+## Why is it important?
+As a data engineer, it is important to note the different data, file and table formats to appropriately design ingestion, transformation and sharing of data.
+
+## Other Pertinent Notes
+
+In terms of table format, there are three types that are usually seen in production. These are optimized to achieve ACID properties, schema evolution and interoperability.
+Delta Table - this is the default read and write table in Databricks.
+Iceberg - this uses the iceberg-engine
+Open Sharing - this is used for sharing tables to external users using the open sharing protocol
+
+For columnar data, there are:
+Parquet - this is the default columnar format used by Apache Spark, this is optimized for compression for both read and write.
+ORC - this has built-in lightweigh indexing
+
+For structured options, there are CSV, JSON, XML and TEXT formats.
+
+On the other hand, unstructured format are usually handled by images, audio, binary and file formats.
+
+## My Key Takeway
+Be prepared to handle data in different formats. It is helpful to know the different type and when, where and how to use them.
