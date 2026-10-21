@@ -640,3 +640,22 @@ On the other hand, unstructured format are usually handled by images, audio, bin
 
 ## My Key Takeway
 Be prepared to handle data in different formats. It is helpful to know the different type and when, where and how to use them.
+
+# Day 33: Volumes
+
+## What is it?
+In Unity Catalog, volumes hold files that are related to structured, unstructured or semi-structured data files.
+
+## Why is it important?
+Volumes are important in accessing, governing, storing and organizing files that are not in tabular format.
+
+## Other Pertinent Notes
+Volumes can be managed or external.
+
+Managed volumes are volumes created where the location is pointed to the managed storage location. This is governed by Unity Catalog in terms of whole lifecycle - creation, access, update and delete.
+
+On the other hand, external volumes are also governed by Unity Catalog on some levels but the data files are stored in an external location. 
+
+## My Key Takeaway
+Volumes handle the access, storage, governance and organization of data files related to structured, unstructured or semi-structured formats.
+
