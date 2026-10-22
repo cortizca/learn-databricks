@@ -659,3 +659,24 @@ On the other hand, external volumes are also governed by Unity Catalog on some l
 ## My Key Takeaway
 Volumes handle the access, storage, governance and organization of data files related to structured, unstructured or semi-structured formats.
 
+# Day 34: Auto Loader: File Discovery
+
+## What is it?
+Auto loader is one way to load and ingest data from a file location (whether managed or external) into a Delta table.
+
+## Why is it important?
+Auto loader is recommended in production workload involving data ingestion as it supports automatic file loading, scales automatically and restarts dynamically in case the data ingestion fails.
+
+## Other Pertinent Notes
+Auto loader handles data ingestion as data files arrive. It uses structured streaming called cloudFiles where it tracks changes in the file location directory and will fire the load process once new files arrive.
+
+Data load process can be setup as follows:
+1.Directory listing - it scans the file storage location and keeps track of the files that have been processes and files to be processed. It is useful for initial data load and for processing files with volume of thousands per hour. Due to API call listing every time, this is more costly than the alternative process, file notification.
+
+2 File Notificaiton - it uses cloud account's notification and queue services in receiving file notifications. Unlike directory listing which requires no setup since it is the default process, file notification requires minimal setup to initiate the process. Moreover, file notification is recommended for production workloads as it is able to handle data files with volume of millions per hour. 
+
+Additionally, for both setup, it creates a checkpoint location where it saves the data load progress of the files that have been processed. This is specifically helpful in restarting the data load process incase it is prematurely terminated due to any data load issue.
+
+## My Key Takeaway
+Auto loader is recommended for production workload for loading data from a specific file storage location.
+It handles automatic data loading thru directory listing or using file notification.
