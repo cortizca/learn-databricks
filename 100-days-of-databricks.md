@@ -680,3 +680,40 @@ Additionally, for both setup, it creates a checkpoint location where it saves th
 ## My Key Takeaway
 Auto loader is recommended for production workload for loading data from a specific file storage location.
 It handles automatic data loading thru directory listing or using file notification.
+
+
+# Day 35: Auto loader: Schema Evolution and Rescue Data
+
+## What is it?
+Table schema focuses on naming and defining the data type for each table column.
+In auto loader, schema could be inferred or could be defined during the initial table load.
+Schema could evolved as well when new columns are introduced.
+
+## Why is it important
+Table schema is the first defense for data governance and imposing data integrity at table write.
+It helps in ensuring that only expected data and data type are being loaded into the table.
+Schema evolution provides the flexibility to update the schema definition when the need arises.
+
+## Other Pertinent Notes
+For initial batch, auto loader performs schema inference (if schema is not defined) based on the first 50GB or 1000 files discovered (whichever is applicable).
+To avoid data type mismatches, auto loader assigns STRING data type for columns.
+
+As new columns are introduced, schema evolution option is available to handle new column types.
+
+1 addNewColumns - this is the default action when schema is not provided.
+The load stream fails. The new column needs to be added.
+Once restarts, the load stream will go through.
+This does not update data type for existing columns.
+
+2 addNewColumnsWithTypeWidening - same load stream process as addNewColumns but can handle
+Data type widening update for existing columns.
+
+3 Rescue - does not add the new columns but does not fail the load stream as well. New data columns are Added in the rescue column and will be available to process when needed.
+
+4 None - default when schema is provided. Does not fail the stream and does not add the new column as well
+
+5 failOnNewColumns - when new column shows up, the load streams fail. The new column needs to be removed in the data file for the load stream to be successful 
+
+
+## My Key Takeaway 
+Auto loader provides option in ensuring the data integrity at table write through schema enforcement and schema evolution option.
