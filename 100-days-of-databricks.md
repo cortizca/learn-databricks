@@ -717,3 +717,28 @@ Data type widening update for existing columns.
 
 ## My Key Takeaway 
 Auto loader provides option in ensuring the data integrity at table write through schema enforcement and schema evolution option.
+
+
+# Day 36: Multi-Hop Medallion Architecture
+
+Medallion architecture follows three data layers with varying use cases, audience and data quality.
+The three layers are bronze, silver and gold.
+
+## Why is it important?
+Medallion architecture implements data governance, data integrity and data enrichment from raw form up to the business aggregation table.
+
+It allows different table forms and views depending on the audience and use case compliance.
+
+Better structure 
+## Other Pertinent Notes
+Bronze layer is the primary data load location in Unity Catalog. It is recommended to load raw data from source by incrementally appending new data as them come. In terms of schema, it is suggested to keep data types string, json string or variant to in order to avoid and lessen data load issues due to evolving data types. 
+
+Moreover, this layer is essential for audit and compliance purposes. Bronze later is intender for data engineers, compliance and audit officers.
+
+Silver layer is where data cleaning and transformation happens. It is suggested to implement schema enforcement, schema evolution, deduplication, constraints and expectations.
+
+Lastly, gold layer serves as the aggregated level where business logic is applied and is readily available to used in dashboards and reports.
+
+
+## My Key Takeaway
+Medallion architecture describes different level of data layers from raw, cleaned and aggregated level essential for different use cases and audiences.
