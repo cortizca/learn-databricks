@@ -742,3 +742,21 @@ Lastly, gold layer serves as the aggregated level where business logic is applie
 
 ## My Key Takeaway
 Medallion architecture describes different level of data layers from raw, cleaned and aggregated level essential for different use cases and audiences.
+
+# Day 37: Incremental Processing Patterns
+
+## What is it?
+Incremental processing patterns describes how only new or updated files are processed instead of reprocessing data files all at once. This is also applicable at row level where only new, updated or deleted rows are processed from the source to the target table.
+
+## Why is it important?
+Incremental processing patterns provides options to only load and process new and updated data files. This is beneficial in terms of total processing time and cost efficiency in terms of compute and storage.
+
+## Other Pertinent Notes
+Auto loader provides the option of incremental processing by default. Given a storage location (either managed or external), it tracks files that are new and/or modified and it only processes them for data loading. Checkpoint location helps with determining what data files have been processed already. Moreover, options for directory listing or file notifications are available in determining newly arrival data files.
+
+In terms of row level, change data feed tracks rows that are new, modified or deleted. It provides the options for executing slowly changing dimensions where only new, updated and/or deleted rows are added and/or deleted on/from the target table. 
+
+For time-based streaming source, watermark-based patterns are also available to ensure only changes during the time interval are being processed and/or loaded.
+
+## My Key Takeway
+Incremental processing patterns helps to focus data file loading based on new and updated data files and row level changes. These processing patterns help with improving query and load performance together with saving compute and storage costs.
