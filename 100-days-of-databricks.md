@@ -760,3 +760,20 @@ For time-based streaming source, watermark-based patterns are also available to 
 
 ## My Key Takeway
 Incremental processing patterns helps to focus data file loading based on new and updated data files and row level changes. These processing patterns help with improving query and load performance together with saving compute and storage costs.
+
+# Day 38: Lakehouse Federation
+
+## What is it?
+Lakehouse federation offers the connection to external databases such as (PostgreSQL, MySQL, SQL Server, Snowflake) without physically copying the data.
+
+## Why is it important?
+It provides the flexibility of querying already established external databases without moving or replicating the data. 
+This is particularly helpful in reducing storage and compute cost as well as querying readily-available data without worrying about redoing the ETL pipeline from scratch.
+
+## Other Pertinent Notes
+Lakehouse federation uses external connection to query database such as PostgreSQL, MySQL, SQL Server, Snowflake without moving or storing the data.
+Connection and security is setup and established at the Metastore level to allow seamless connection and querying.
+In querying external database, query pushdown optimization is important to ensure that filter is close to the table source to improve compute cost and query performance.
+
+## My Key Takeaway
+Lakehouse federation provides the ability to query external database without physically copying the data.
