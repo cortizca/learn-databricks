@@ -798,3 +798,42 @@ Autoloader checkpoint recovery - checkpoint file in a checkpoint location folder
 ## My Key Takeaway
 Idempotent pipeline design produce the same result after rerun ensuring existing data will be updated and not duplicated and source and target tables are synced.
 
+# Day 40: SCD Type 1 & Type 2 Patterns
+
+## What is it?
+Slowly changing dimension is one of the important table load patterns that a data engieer should know.
+These are table designs describing how the changes from the source table will be reflected into the target table.
+
+SCD 0 - no changes are expected on the table, hence operation will always be data append.
+SCD 1 - new data will be loaded from the source table, existing rows will be updated to reflect the current value.
+SCD 2 - new data will be loaded from the source table. For existing rows, the new values will be added, the old value will be retained
+and the "valid from" and "valid to" flag will be updated. Deleted values from the source could be marked as soft delete by updating the "valid to. flag
+
+## Why is it important?
+Knowing the different types of slowly changing dimensions, their use cases and implementation will help data engineers on
+how to design production-ready tables. This is also helpful in ensuring that created tables have the correct design from the start to eliminate
+redoing the table from scratch.
+
+## Other Pertinent Notes
+One way to implement SCD2 in databricks is the use of MERGE INTO:
+
+It handles the insert, update and delete from source table into the target table.
+
+```
+MERGE INTO target_table using source_table
+When match then set *
+When not match then insert
+When not match by source then delete
+```
+
+Moreover, it is suggested to use AUTO CDC over MERGE INTO for production pipelines.
+
+```
+AUTO CDC INTO
+FLOW AUTO CDC
+From source_table
+Keys()
+```
+
+## My Key Takeway
+Slowly changing dimension design handles how values from the source table will be reflected into the target table.
