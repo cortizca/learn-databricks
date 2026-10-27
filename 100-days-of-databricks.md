@@ -777,3 +777,24 @@ In querying external database, query pushdown optimization is important to ensur
 
 ## My Key Takeaway
 Lakehouse federation provides the ability to query external database without physically copying the data.
+
+# Day 39: Idempotent Pipeline Design
+
+## What is it?
+Idempotent pipeline design enables to produce the same result even after a rerun.
+
+## Why is it important?
+Idempotent pipeline design ensures consistency during load or ETL pipeline work. It follows the ACID characteristics where transaction is either fully committed or not at all.
+
+## Other pertinent notes
+Databricks-specific techniques available:
+
+MERGE with natural keys - MERGE INTO allows insert, update and delete from a source to a target table
+
+INSERT OVERWRITE with replaceWhere - overwrites existing data ensuring that data will not be duplicated
+
+Autoloader checkpoint recovery - checkpoint file in a checkpoint location folder. Stores metadata for data files that have been processed already. This allows to skip files that has been processed avoiding data duplication every rerun. Moreover, checkpoint file also helps in restarting where it left off in case the stream run fails and needs to be restarted.
+
+## My Key Takeaway
+Idempotent pipeline design produce the same result after rerun ensuring existing data will be updated and not duplicated and source and target tables are synced.
+
