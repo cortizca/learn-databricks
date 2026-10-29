@@ -837,3 +837,23 @@ Keys()
 
 ## My Key Takeway
 Slowly changing dimension design handles how values from the source table will be reflected into the target table.
+
+# Day 41: Structured Streaming Fundamentals
+
+## What is it?
+Structured streaming allows reading from different data sources and file location and writing data into external location or table sinks in real-time mode with low latency. This also applies to micro batches intended for analytics workload and ETL pipelines.
+
+## Why is it important?
+Structured streaming provides the option and flexibility of reading and writing data in near real-time. This is extremely helpful for transactions and analytical workload that needs up-to-date information and sync.
+
+## Other Pertinent Notes
+Structured streaming reads and writes data in incremental manner. Data can be read from various location and connection using auto loader. 
+Delta lake table could also serve as both the source table or the sink table.
+With structured streaming and other databricks features, it can be guaranteed that there is exactly once delivery with the use of checkpoint location.
+Moreover, there are options are well for output method whether append, update or complete mode is to be applied.
+
+In terms of structured streaming, two APIs are very handly in setting up the read and write data operations - ```readStream``` API and ```writeStream``` API.
+
+## My Key Takeaway
+Structured streaming helps in designing incremental reading and writing of data from source table or file location into a table sink. 
+This is important if near real-time transaction or analytics is to be achieved.
