@@ -857,3 +857,26 @@ In terms of structured streaming, two APIs are very handly in setting up the rea
 ## My Key Takeaway
 Structured streaming helps in designing incremental reading and writing of data from source table or file location into a table sink. 
 This is important if near real-time transaction or analytics is to be achieved.
+
+# Day 42: Triggers
+
+## What is it?
+Triggers are set to define when jobs and pipelines will run. Some triggeres are manually setup, continuously or depending when updates are made on the source table or file location.
+
+## Why is it important?
+Triggers are important in an end-to-end automation pipeline. It ensures that workflows starts to run with less manual intervention or not at all.
+Carefully designing the trigger definition is important to balance cost, latency and performance.
+
+## Other Pertinent Notes
+There are couple of triggers available in Lakeflow jobs. Triggers are needed in order to complete an end-to-end pipeline workflow definition.
+
+0 Manual - need to manually run the pipeline. Intended for adhoc or on-demand pipeline runs.
+1 Schedule - triggers can be scheduled to run on an interval. Cron job is used for more complicated and detailed schedules.
+3 Continuous - pipeline will start once the previous run finishes.
+4 Update on source table - triggers could be set when updates are commit in the source table. It is important to consider the sensitivity of how the trigger would work.
+5 File arrival - aside for source table update, triggers could also link to new arrival of files on a configured file location
+6 Creation or update of Unity Catalog model - triggers can tied to creation or update of Unity Catalog as well.
+
+## My Key Takeaway
+Triggers are important in building end-to-end automation pipeline to determine when the workflow will run.
+Triggers could be manual or change-based. Before deciding what trigger to use, consider the cost, latency and performance implication.
