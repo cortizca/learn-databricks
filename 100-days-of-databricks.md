@@ -880,3 +880,15 @@ There are couple of triggers available in Lakeflow jobs. Triggers are needed in 
 ## My Key Takeaway
 Triggers are important in building end-to-end automation pipeline to determine when the workflow will run.
 Triggers could be manual or change-based. Before deciding what trigger to use, consider the cost, latency and performance implication.
+
+
+# Day 43: Output Mode
+
+## What is it?
+Output mode refers to different options on how results of an aggregation on a stateful stream will be written into a sink for every trigger. Output modes could be append, update and complete.
+
+## Why is it important?
+Undestanding output mode is important in configuring structured streaming flow. For stateless stream, output mode does not matter since aggregation is not needed hence any output mode provides the same result.
+
+## Other Pertinent Notes
+For stateful stream, aggregations are calculated based on the defined watermark.
